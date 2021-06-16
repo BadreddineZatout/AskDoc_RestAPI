@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       doctorId: {
         type: Sequelize.INTEGER
+      },
+      CodeQR: {
+        type: Sequelize.STRING
       }
     });
     return Booking;

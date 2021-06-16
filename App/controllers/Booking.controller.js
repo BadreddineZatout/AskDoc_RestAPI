@@ -13,7 +13,8 @@ exports.create = (req, res) => {
   const booking = {
     bookingDate: req.body.bookingDate,
     bookingTime: req.body.bookingTime,
-    doctorId: req.body.doctorId
+    doctorId: req.body.doctorId,
+    CodeQR: req.body.CodeQR
   };
 
   Booking.create(booking)
