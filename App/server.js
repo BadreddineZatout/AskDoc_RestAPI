@@ -21,8 +21,8 @@ app.use(express.static('public'));
 require('./routes/Doctor.routes')(app)
 require('./routes/Patient.routes')(app)
 require('./routes/Booking.routes')(app)
-// require('./routes/Conseil.routes')(app)
-// require('./routes/Traitement.routes')(app)
+require('./routes/Conseil.routes')(app)
+require('./routes/Traitement.routes')(app)
 
 
 // set port, listen for requests
