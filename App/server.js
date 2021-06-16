@@ -17,12 +17,12 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-                                                               
+app.use(express.static('public'));                              
 require('./routes/Doctor.routes')(app)
 require('./routes/Patient.routes')(app)
 require('./routes/Booking.routes')(app)
-require('./routes/Conseil.routes')(app)
-require('./routes/Traitement.routes')(app)
+// require('./routes/Conseil.routes')(app)
+// require('./routes/Traitement.routes')(app)
 
 
 // set port, listen for requests
