@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     iddoc: req.body.iddoc,
     idpat: req.body.idpat,
     text: req.body.text,
-    isSyncronized: false
+    isSyncronized: req.body.isSyncronized
   };
 
   Conseil.create(conseil)
