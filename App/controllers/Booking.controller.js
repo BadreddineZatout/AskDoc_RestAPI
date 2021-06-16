@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     doctorId: req.body.doctorId
   };
 
-  Booking.create(tutorial)
+  Booking.create(booking)
     .then(data => {
       res.send(data);
     })
