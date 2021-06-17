@@ -13,12 +13,15 @@ exports.create = (req, res) => {
   const booking = {
     bookingDate: req.body.bookingDate,
     bookingTime: req.body.bookingTime,
-    doctorId: req.body.doctorId
+    doctorId: req.body.doctorId,
+    CodeQR: req.body.CodeQR
   };
 
   Booking.create(booking)
     .then(data => {
-      res.send(data);
+      res.send({
+        message: 'Booking created successfully!'
+      });
     })
     .catch(err => {
       res.status(500).send({
@@ -43,7 +46,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {  
-    Booking.findAll()
+    const id = req.params.id
+    Booking.findAll({
+      where: {doctorId: id}
+    })
       .then(data => {
         res.send(data);
       })

@@ -6,13 +6,16 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true
       },
       bookingDate: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       bookingTime: {
         type: Sequelize.STRING
       },
       doctorId: {
         type: Sequelize.INTEGER
+      },
+      CodeQR: {
+        type: Sequelize.STRING
       }
     });
     return Booking;

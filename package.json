@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node App/server"
+    "start": "nodemon App/server"
   },
   "author": "Badreddine Zatout",
   "license": "ISC",

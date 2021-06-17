@@ -19,7 +19,9 @@ exports.create = (req, res) => {
 
   Conseil.create(conseil)
     .then(data => {
-      res.send(data);
+      res.send({
+        message: 'Conseil created successfully!'
+      });
     })
     .catch(err => {
       res.status(500).send({
@@ -30,9 +32,15 @@ exports.create = (req, res) => {
 };
 
   exports.findOne = (req, res) => {
-    const id = req.params.id;
+    const iddoc = req.params.iddoc;
+    const idpat = req.params.idpat;
   
-    Conseil.findByPk(id)
+    Conseil.findOne({
+      where: {
+        iddoc: iddoc,
+        idpat: idpat
+      }
+    })
       .then(data => {
         res.send(data);
       })
