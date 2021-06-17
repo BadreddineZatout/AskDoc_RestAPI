@@ -8,15 +8,24 @@ exports.findAuth = (req, res) => {
         where: {
             tel: tel,
             pdw: pdw
-        }
+        },
+        attributes: ['id', 'name', 'tel']
      })
       .then(data => {
-        res.send(data);
+        if (data.length > 0){
+          res.send({
+            message: 1
+          });
+        }else{
+          res.send({
+            message: 0
+          });
+        }
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "Some error occurred while retrieving patients."
         });
       });
   };
@@ -24,13 +33,13 @@ exports.findAuth = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    Patient.findByPk(id)
+    Patient.findByPk(id, {attributes: ['id', 'name', 'tel']})
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Tutorial with id=" + id
+          message: "Error retrieving Patient with id=" + id
         });
       });
   };
