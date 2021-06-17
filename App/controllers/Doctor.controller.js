@@ -8,15 +8,24 @@ exports.findAuth = (req, res) => {
         where: {
             tel: tel,
             pdw: pdw
-        }
+        },
+        attributes: ['doctorId', 'name', 'tel', 'spec', 'lat', 'lng', 'exp', 'image']
      })
       .then(data => {
-        res.send(data);
+        if (data.length > 0){
+          res.send({
+            message: 1
+          });
+        }else{
+          res.send({
+            message: 0
+          });
+        }
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "Some error occurred while retrieving doctor."
         });
       });
   };
@@ -24,26 +33,26 @@ exports.findAuth = (req, res) => {
   exports.findOne = (req, res) => {
     const id = req.params.id;
   
-    Doctor.findByPk(id)
+    Doctor.findByPk(id, {attributes: ['doctorId', 'name', 'tel', 'spec', 'lat', 'lng', 'exp', 'image']})
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Tutorial with id=" + id
+          message: "Error retrieving doctor with id=" + id
         });
       });
   };
 
   exports.findAll = (req, res) => {  
-    Doctor.findAll()
+    Doctor.findAll({attributes: ['doctorId', 'name', 'tel', 'spec', 'lat', 'lng', 'exp', 'image']})
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tutorials."
+            err.message || "Some error occurred while retrieving doctors."
         });
       });
   };

@@ -16,7 +16,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 app.use(express.static('public'));                              
 require('./routes/Doctor.routes')(app)
 require('./routes/Patient.routes')(app)
@@ -24,9 +26,12 @@ require('./routes/Booking.routes')(app)
 require('./routes/Conseil.routes')(app)
 require('./routes/Traitement.routes')(app)
 
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to AskDoc application." });
+});
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
