@@ -1,22 +1,13 @@
 const db = require("../models");
 const Traitement = db.traitements;
 
-  exports.findOne = (req, res) => {
+  exports.findAll = (req, res) => { 
     const id = req.params.id;
-  
-    Traitement.findByPk(id)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving Tutorial with id=" + id
-        });
-      });
-  };
 
-  exports.findAll = (req, res) => {  
-    Traitement.findAll()
+    Traitement.findAll({
+      where: {bookingId: id},
+      attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId']
+    })
       .then(data => {
         res.send(data);
       })

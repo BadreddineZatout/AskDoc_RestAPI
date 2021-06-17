@@ -19,7 +19,9 @@ exports.create = (req, res) => {
 
   Booking.create(booking)
     .then(data => {
-      res.send(data);
+      res.send({
+        message: 'Booking created successfully!'
+      });
     })
     .catch(err => {
       res.status(500).send({
@@ -44,7 +46,10 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {  
-    Booking.findAll()
+    const id = req.params.id
+    Booking.findAll({
+      where: {doctorId: id}
+    })
       .then(data => {
         res.send(data);
       })

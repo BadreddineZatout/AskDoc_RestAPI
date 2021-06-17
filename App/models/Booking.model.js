@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true
       },
       bookingDate: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       bookingTime: {
         type: Sequelize.STRING
