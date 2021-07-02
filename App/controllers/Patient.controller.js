@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 exports.findAuth = (req, res) => {
     const tel = req.body.tel;
     const pdw = req.body.pdw;
-    if(tel == "" || pdw == ""){
+  if(tel == "" || pdw == ""){
       res.status(400).send({
         message: "empty request!!"
       });
@@ -39,9 +39,10 @@ exports.findAuth = (req, res) => {
      })
       .then(data => {
         if (data.length > 0){
-          res.send(data);
+
+          res.send(data[0]);
         }else{
-          res.send(null)
+          res.status(400).send(null);
         }
       })
       .catch(err => {
