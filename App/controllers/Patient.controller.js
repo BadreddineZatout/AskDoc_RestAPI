@@ -33,13 +33,7 @@ exports.findAuth = (req, res) => {
      })
       .then(data => {
         if (data.length > 0){
-          res.send({
-            message: 1
-          });
-        }else{
-          res.send({
-            message: 0
-          });
+          res.send(data);
         }
       })
       .catch(err => {
