@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+var path = require('path');
 
 const app = express();
 const db = require("./models");
@@ -9,6 +10,7 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+app.use("/public",express.static(path.join(__dirname, 'public')));                              
 db.sequelize.sync();
 app.use(cors(corsOptions));
 
@@ -19,7 +21,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
-app.use(express.static('public'));                              
 require('./routes/Doctor.routes')(app)
 require('./routes/Patient.routes')(app)
 require('./routes/Booking.routes')(app)
