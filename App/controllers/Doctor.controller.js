@@ -39,8 +39,7 @@ exports.findAuth = (req, res) => {
         }
      })
       .then(data => {
-        if (data.length > 0){
-          if (data.length > 0){
+      if (data.length > 0){
           res.send(data[0]);
         }else{
           res.status(400).send(null);
