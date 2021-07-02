@@ -25,6 +25,12 @@ exports.create = (req, res) => {
 exports.findAuth = (req, res) => {
     const tel = req.body.tel;
     const pdw = req.body.pdw;
+    if(tel == "" || pdw == ""){
+      res.status(400).send({
+        message: "empty request!!"
+      });
+      return
+    }
     Patient.findAll({
         where: {
             tel: tel,
@@ -34,6 +40,8 @@ exports.findAuth = (req, res) => {
       .then(data => {
         if (data.length > 0){
           res.send(data);
+        }else{
+          res.send(null)
         }
       })
       .catch(err => {
