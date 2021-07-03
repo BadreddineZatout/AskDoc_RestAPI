@@ -27,7 +27,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
 
     Traitement.findAll({
-      attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId']
+      attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId', 'patientId', 'isOffline']
     })
       .then(data => {
         res.send(data);
