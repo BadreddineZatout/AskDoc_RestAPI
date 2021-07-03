@@ -3,7 +3,7 @@ const Traitement = db.traitements;
 
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name) {
+  if (!req.body.treatmentDescription) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
