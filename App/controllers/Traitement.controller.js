@@ -27,8 +27,24 @@ exports.create = (req, res) => {
     const id = req.params.id;
 
     Traitement.findAll({
-      where: {patientId: id},
       attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId']
+    })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+      });
+  };
+  exports.findAllOffline = (req, res) => { 
+    const id = req.params.id;
+
+    Traitement.findAll({
+      where: {isOffline: false},
+      attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId', 'patientId', 'isOffline']
     })
       .then(data => {
         res.send(data);
