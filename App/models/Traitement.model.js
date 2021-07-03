@@ -19,6 +19,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       bookingId: {
         type: Sequelize.INTEGER
+      },
+      isOffline:{
+        type: Sequelize.BOOLEAN
       }
     });
     return Traitement;
