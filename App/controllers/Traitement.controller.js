@@ -27,7 +27,6 @@ exports.create = (req, res) => {
     const id = req.params.id;
 
     Traitement.findAll({
-      where: {patientId: id},
       attributes: ['treatmentId', 'disease', 'treatmentDescription', 'treatmentBeginDate', 'treatmentEndDate', 'bookingId']
     })
       .then(data => {
