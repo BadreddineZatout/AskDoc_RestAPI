@@ -4,6 +4,7 @@ module.exports = app =>{
 
     router.post("/", traitement.create);
     router.get("/", traitement.findAll);
+    router.get("/offline", traitement.findAllOffline);
 
     app.use('/traitement', router);
 }
