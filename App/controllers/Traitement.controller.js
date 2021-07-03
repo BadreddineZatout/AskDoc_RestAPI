@@ -56,3 +56,24 @@ exports.create = (req, res) => {
         });
       });
   };
+
+  exports.updateOffline = (req, res) => {
+    Traitement.update(
+      {isOffline: true}, {where : {isOffline: false}}
+    ).then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Offline update succeded"
+        });
+      } else {
+        res.status(400).send({
+          message: `Ofdline update failed`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating"
+      });
+    });
+  }
