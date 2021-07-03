@@ -20,6 +20,9 @@ module.exports = (sequelize, Sequelize) => {
       bookingId: {
         type: Sequelize.INTEGER
       },
+      patientId:{
+        type: Sequelize.INTEGER
+      },
       isOffline:{
         type: Sequelize.BOOLEAN
       }
