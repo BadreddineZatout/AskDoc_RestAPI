@@ -1,5 +1,6 @@
 const db = require("../models");
 const Booking = db.bookings;
+const Patient = db.patients;
 
 exports.create = (req, res) => {
   // Validate request
@@ -14,6 +15,7 @@ exports.create = (req, res) => {
     bookingDate: req.body.bookingDate,
     bookingTime: req.body.bookingTime,
     doctorId: req.body.doctorId,
+    patientId: req.body.patientId,
     CodeQR: req.body.CodeQR
   };
 
@@ -63,7 +65,12 @@ exports.create = (req, res) => {
   exports.findByQR = (req, res) => {
     const codeQR = req.params.codeQR
     Booking.findOne({
-      where: {CodeQR: codeQR}
+      where: {CodeQR: codeQR},
+      raw: true,
+      include: [{
+        model: Patient,
+        attributes: ['name']
+      }]
     })
       .then(data => {
         res.send(data);
