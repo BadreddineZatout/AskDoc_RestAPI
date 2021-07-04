@@ -11,7 +11,7 @@ var corsOptions = {
 };
 
 app.use("/public",express.static(path.join(__dirname, 'public')));                              
-db.sequelize.sync({force:true});
+db.sequelize.sync();
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
