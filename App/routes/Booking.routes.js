@@ -4,6 +4,7 @@ module.exports = app =>{
 
     router.get("/:id", booking.findAll);
     router.post("/", booking.create);
+    router.get("/QR/:codeQR", booking.findByQR);
     
     app.use('/booking', router);
 }
