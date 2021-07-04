@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
       doctorId: {
         type: Sequelize.INTEGER
       },
+      patientId: {
+        type: Sequelize.INTEGER
+      },
       CodeQR: {
         type: Sequelize.STRING
       }

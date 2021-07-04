@@ -60,3 +60,18 @@ exports.create = (req, res) => {
         });
       });
   };
+  exports.findByQR = (req, res) => {
+    const codeQR = req.params.codeQR
+    Booking.findOne({
+      where: {CodeQR: codeQR}
+    })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+      });
+  }
