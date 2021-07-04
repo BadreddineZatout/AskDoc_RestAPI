@@ -16,6 +16,7 @@ exports.create = (req, res) => {
     bookingTime: req.body.bookingTime,
     doctorId: req.body.doctorId,
     patientId: req.body.patientId,
+    patientName: req.body.patientName,
     CodeQR: req.body.CodeQR
   };
 
@@ -65,12 +66,7 @@ exports.create = (req, res) => {
   exports.findByQR = (req, res) => {
     const codeQR = req.params.codeQR
     Booking.findOne({
-      where: {CodeQR: codeQR},
-      raw: true,
-      include: [{
-        model: Patient,
-        attributes: ['name']
-      }]
+      where: {CodeQR: codeQR}
     })
       .then(data => {
         res.send(data);
