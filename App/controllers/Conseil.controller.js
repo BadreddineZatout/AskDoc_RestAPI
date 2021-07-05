@@ -14,7 +14,7 @@ exports.create = (req, res) => {
   Conseil.bulkCreate(conseils)
     .then(data => {
       res.send({
-        conseils
+        data
       });
     })
     .catch(err => {
