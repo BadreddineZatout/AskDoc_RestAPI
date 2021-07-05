@@ -10,8 +10,14 @@ exports.create = (req, res) => {
     return;
   }
 
-  const conseils = req.body;
-  Conseil.bulkCreate(conseils)
+  const conseil = {
+    iddoc : req.body.iddoc,
+    idpat : req.body.idpat,
+    text : req.body.text,
+    isSyncronized : 1
+  };
+
+  Conseil.create(conseil)
     .then(data => {
       res.send(data);
     })
