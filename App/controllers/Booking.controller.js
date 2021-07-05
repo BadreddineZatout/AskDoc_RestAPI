@@ -130,3 +130,32 @@ exports.create = (req, res) => {
         });
       });
   }
+
+  exports.findByPatient = (req, res) => {
+    const id = req.params.id
+    console.log(1)
+    Booking.belongsTo(Doctor, { foreignKey: 'doctorId' })
+    Booking.findAll({
+      raw:true,
+      attributes:[
+        'bookingDate',
+        'bookingHour',
+        'CodeQR',
+        'doctor.name'
+      ],
+      include:[{
+        model:Doctor,
+        attributes:[]
+      }],
+      where: {patientId:id}
+    })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving bookings."
+        });
+      });
+  }
