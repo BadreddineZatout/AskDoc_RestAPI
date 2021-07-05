@@ -31,6 +31,9 @@ exports.findAuth = (req, res) => {
       });
       return
     }
+  res.status(200).send({
+    message: "ok"
+  });
   };
 
   exports.findOne = (req, res) => {
