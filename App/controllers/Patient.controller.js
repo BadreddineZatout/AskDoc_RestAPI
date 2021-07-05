@@ -23,9 +23,14 @@ exports.create = (req, res) => {
     });
 };
 exports.findAuth = (req, res) => {
-    res.status(200).send({
-      message: "ok"
-    });
+    const tel = req.body.tel;
+    const pdw = req.body.pdw;
+    if(tel == "" || pdw == ""){
+      res.status(400).send({
+        message: "empty request!!"
+      });
+      return
+    }
   };
 
   exports.findOne = (req, res) => {
