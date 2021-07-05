@@ -3,10 +3,7 @@ const Conseil = db.conseils;
 
 exports.create = (req, res) => {
   // Validate request
-  res.status(200).send(
-    "ok"
-    );
-  /*if (!req.body) {
+  if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,8 +11,8 @@ exports.create = (req, res) => {
   }
 
   const conseils = req.body;
-
-  Conseil.bulkCreate(conseils)
+  res.status(200).send(conseils);
+  /*Conseil.bulkCreate(conseils)
     .then(data => {
       res.send({
         message: 'Conseil created successfully!'
