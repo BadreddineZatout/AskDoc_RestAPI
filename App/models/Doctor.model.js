@@ -28,6 +28,15 @@ module.exports = (sequelize, Sequelize) => {
       },
       image: {
         type: Sequelize.STRING
+      },
+      startAt: {
+        type: Sequelize.INTEGER
+      },
+      finishAt: {
+        type: Sequelize.INTEGER
+      },
+      bookingsByHour:{
+        type: Sequelize.INTEGER
       }
     });
   
