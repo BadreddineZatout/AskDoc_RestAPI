@@ -3,7 +3,10 @@ const Conseil = db.conseils;
 
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body) {
+  res.status(200).send({
+    message: "ok"
+    });
+  /*if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -23,7 +26,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Conseil."
       });
-    });
+    });*/
 };
 
   exports.findOne = (req, res) => {
