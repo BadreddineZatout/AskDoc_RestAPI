@@ -12,10 +12,10 @@ exports.create = (req, res) => {
 
   const conseils = req.body;
   res.status(200).send(conseils);
-  /*Conseil.bulkCreate(conseils)
+  Conseil.bulkCreate(conseils)
     .then(data => {
       res.send({
-        message: 'Conseil created successfully!'
+        conseils
       });
     })
     .catch(err => {
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Conseil."
       });
-    });*/
+    });
 };
 
   exports.findOne = (req, res) => {
