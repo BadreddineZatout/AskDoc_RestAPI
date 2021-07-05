@@ -23,34 +23,9 @@ exports.create = (req, res) => {
     });
 };
 exports.findAuth = (req, res) => {
-    const tel = req.body.tel;
-    const pdw = req.body.pdw;
-  if(tel == "" || pdw == ""){
-      res.status(400).send({
-        message: "empty request!!"
-      });
-      return
-    }
-    Patient.findAll({
-        where: {
-            tel: tel,
-            pdw: pdw
-        }
-     })
-      .then(data => {
-        if (data.length > 0){
-
-          res.send(data[0]);
-        }else{
-          res.status(400).send(null);
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving patients."
-        });
-      });
+    res.status(200).send({
+      message: "ok"
+    });
   };
 
   exports.findOne = (req, res) => {
