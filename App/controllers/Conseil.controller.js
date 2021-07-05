@@ -10,14 +10,9 @@ exports.create = (req, res) => {
     return;
   }
 
-  const conseil = {
-    iddoc: req.body.iddoc,
-    idpat: req.body.idpat,
-    text: req.body.text,
-    isSyncronized: 1
-  };
+  const conseils = req.body;
 
-  Conseil.create(conseil)
+  Conseil.bulkCreate(conseils)
     .then(data => {
       res.send({
         message: 'Conseil created successfully!'
@@ -35,7 +30,7 @@ exports.create = (req, res) => {
     const iddoc = req.params.iddoc;
     const idpat = req.params.idpat;
   
-    Conseil.findOne({
+    Conseil.findAll({
       where: {
         iddoc: iddoc,
         idpat: idpat
