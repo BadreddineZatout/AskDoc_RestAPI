@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       isSyncronized: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.INTEGER
       }
     });
     return Conseil;
