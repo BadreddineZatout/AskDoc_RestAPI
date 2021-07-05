@@ -31,7 +31,25 @@ exports.findAuth = (req, res) => {
       });
       return
     }
-    res.status(200).send(req.body);
+    Patient.findAll({
+        where: {
+            tel: tel,
+            pdw: pdw
+        }
+     })
+      .then(data => {
+        if (data.length > 0){
+          res.send(data);
+        }else{
+          res.send(null)
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving patients."
+        });
+      });
   };
 
   exports.findOne = (req, res) => {
