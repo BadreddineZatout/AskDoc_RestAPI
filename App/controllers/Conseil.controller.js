@@ -11,7 +11,6 @@ exports.create = (req, res) => {
   }
 
   const conseils = req.body;
-  res.status(200).send(conseils);
   Conseil.bulkCreate(conseils)
     .then(data => {
       res.send({
