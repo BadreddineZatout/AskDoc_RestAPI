@@ -3,8 +3,8 @@ module.exports = app =>{
     var router = require("express").Router();
 
     router.get("/findByDoctor/:id/:date", booking.findAll);
-    router.put("/", booking.create);
-    router.put("/:id", booking.findByDoc);
+    router.post("/", booking.create);
+    router.get("/:id", booking.findByDoc);
     router.get("/QR/:codeQR", booking.findByQR);
     
     app.use('/booking', router);
