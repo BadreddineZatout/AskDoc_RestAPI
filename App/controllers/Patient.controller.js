@@ -31,7 +31,7 @@ exports.findAuth = (req, res) => {
       });
       return
     }
-    Patient.findAll({
+    Patient.findOne({
         where: {
             tel: tel,
             pdw: pdw
