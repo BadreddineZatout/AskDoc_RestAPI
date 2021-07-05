@@ -22,9 +22,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       CodeQR: {
         type: Sequelize.STRING
-      },
-      isOffline:{
-        type: Sequelize.BOOLEAN
       }
     });
     return Booking;
