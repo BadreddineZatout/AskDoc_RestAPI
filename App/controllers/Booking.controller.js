@@ -100,7 +100,7 @@ exports.create = (req, res) => {
     }
   };
 
-  /*exports.findAll = (req, res) => {  
+  exports.findByDoc = (req, res) => {  
     const id = req.params.id
     Booking.findAll({
       where: {doctorId: id}
@@ -114,7 +114,7 @@ exports.create = (req, res) => {
             err.message || "Some error occurred while retrieving bookings."
         });
       });
-  };*/
+  };
   exports.findByQR = (req, res) => {
     const codeQR = req.params.codeQR
     Booking.findOne({
