@@ -3,9 +3,9 @@ const Conseil = db.conseils;
 
 exports.create = (req, res) => {
   // Validate request
-  res.status(200).send({
-    message: "ok"
-    });
+  res.status(200).send(
+    "ok"
+    );
   /*if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
